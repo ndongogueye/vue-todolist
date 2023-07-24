@@ -23,6 +23,27 @@
                 }
             },
         
- 
+            methods: {
+                aggiungiCompito() {
+                    const testoCompito = this.nuovoTestoCompito.trim();
+                    if (testoCompito !== "") {
+                        const nuovoCompito = {
+                            id: this.compiti.length + 1,
+                            testo: testoCompito,
+                            completato: false,
+                        };
+                        this.compiti.push(nuovoCompito);
+                        this.nuovoTestoCompito = "";
+                    }
+                },
+        
+                toggleCompletamentoCompito(indice) {
+                    this.compiti[indice].completato = !this.compiti[indice].completato;
+                },
+        
+                rimuoviCompito(indice) {
+                    this.compiti.splice(indice, 1);
+                },
+            }
         }).mount("#app");
 
